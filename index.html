@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>2º Workshop de Regência</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cadastro CREIO Teens</title>
 
-<!-- Fonte moderna sem serifa -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --amarelo: #f5c400;
-  --preto: #0a0a0a;
-  --cinza: #1a1a1a;
-  --branco: #ffffff;
-  --texto: #dddddd;
+  --amarelo: #ffd000;
+  --roxo: #6a00ff;
+  --rosa: #ff3cac;
+  --azul: #00c6ff;
+  --preto: #0b0b0b;
+  --card: rgba(255,255,255,0.08);
 }
 
 * {
@@ -24,43 +24,46 @@
 
 body {
   margin: 0;
-  background: radial-gradient(circle at top, #1f1f1f, #000);
-  color: var(--branco);
+  background: linear-gradient(135deg, #000, #12001f, #000);
+  color: #fff;
 }
 
 .container {
   max-width: 720px;
   margin: auto;
-  padding: 40px 20px;
-  animation: fadeUp 1s ease;
+  padding: 30px 16px 50px;
+  animation: fade 1s ease;
 }
 
-@keyframes fadeUp {
+@keyframes fade {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 header {
   text-align: center;
-  margin-bottom: 35px;
+  margin-bottom: 30px;
 }
 
 header h1 {
-  color: var(--amarelo);
   font-size: 2.2rem;
-  margin-bottom: 10px;
+  background: linear-gradient(90deg, var(--amarelo), var(--rosa), var(--azul));
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
 
 header p {
-  color: var(--texto);
+  color: #ddd;
   font-size: 1rem;
 }
 
 .card {
-  background: rgba(255,255,255,0.06);
-  backdrop-filter: blur(8px);
-  border-radius: 18px;
-  padding: 30px;
+  background: var(--card);
+  backdrop-filter: blur(10px);
+  border-radius: 22px;
+  padding: 28px;
+  box-shadow: 0 0 30px rgba(0,0,0,0.4);
 }
 
 .section {
@@ -68,14 +71,14 @@ header p {
 }
 
 .section h2 {
-  color: var(--amarelo);
   font-size: 1.2rem;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
+  color: var(--amarelo);
 }
 
 .section span {
   font-size: 0.9rem;
-  color: var(--texto);
+  color: #ccc;
 }
 
 label {
@@ -88,32 +91,27 @@ input, select, textarea {
   width: 100%;
   margin-top: 6px;
   padding: 14px;
-  border-radius: 12px;
+  border-radius: 14px;
   border: none;
   background: #111;
-  color: var(--branco);
+  color: #fff;
   font-size: 0.95rem;
 }
 
 textarea {
+  min-height: 110px;
   resize: vertical;
-  min-height: 100px;
 }
 
 input:focus, select:focus, textarea:focus {
-  outline: 2px solid var(--amarelo);
-}
-
-.radio-group {
-  margin-top: 10px;
+  outline: 2px solid var(--rosa);
 }
 
 .radio-group label {
   display: flex;
-  align-items: center;
   gap: 10px;
+  align-items: center;
   margin-top: 8px;
-  font-size: 0.9rem;
   cursor: pointer;
 }
 
@@ -121,28 +119,46 @@ input:focus, select:focus, textarea:focus {
   width: auto;
 }
 
+input[type="file"] {
+  padding: 12px;
+  background: #111;
+  color: #aaa;
+  cursor: pointer;
+}
+
+.preview {
+  margin-top: 12px;
+  text-align: center;
+}
+
+.preview img {
+  max-width: 160px;
+  border-radius: 16px;
+  border: 3px solid var(--amarelo);
+}
+
 button {
   width: 100%;
   margin-top: 30px;
-  padding: 16px;
-  background: var(--amarelo);
-  color: #000;
-  font-size: 1rem;
+  padding: 18px;
+  background: linear-gradient(90deg, var(--rosa), var(--roxo));
+  color: #fff;
+  font-size: 1.05rem;
   font-weight: 600;
   border: none;
-  border-radius: 14px;
+  border-radius: 18px;
   cursor: pointer;
   transition: 0.3s;
 }
 
 button:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 15px rgba(245,196,0,0.4);
+  transform: scale(1.04);
+  box-shadow: 0 0 20px rgba(255,60,172,0.5);
 }
 
 footer {
-  text-align: center;
   margin-top: 25px;
+  text-align: center;
   font-size: 0.8rem;
   color: #aaa;
 }
@@ -160,17 +176,27 @@ footer {
 <div class="container">
 
 <header>
-  <h1>2º Workshop de Regência</h1>
-  <p>Queremos te conhecer melhor 💛  
-     Responda com calma, esse espaço é seguro.</p>
+  <h1>Cadastro CREIO Teens</h1>
+  <p>Esse espaço é seguro 💙  
+  Responda com sinceridade, estamos aqui pra caminhar juntos.</p>
 </header>
 
 <div class="card">
 
-<!-- 🔹 INFORMAÇÕES BÁSICAS -->
+<!-- 📸 FOTO -->
+<div class="section">
+  <h2>📸 Foto para identificação</h2>
+  <span>Uma foto simples, pode tirar agora mesmo 😊</span>
+
+  <label>Tirar ou enviar foto</label>
+  <input type="file" id="foto" accept="image/*" capture="user" required>
+
+  <div class="preview" id="preview"></div>
+</div>
+
+<!-- 📌 INFORMAÇÕES -->
 <div class="section">
   <h2>📌 Informações básicas</h2>
-  <span>Essas informações nos ajudam a cuidar melhor de você</span>
 
   <label>Nome completo</label>
   <input required>
@@ -194,10 +220,9 @@ footer {
   <input>
 </div>
 
-<!-- 🔹 VIDA ESPIRITUAL -->
+<!-- 💒 VIDA ESPIRITUAL -->
 <div class="section">
   <h2>💒 Vida espiritual</h2>
-  <span>Sem pressão, responda com sinceridade</span>
 
   <label>Como você se sente hoje em relação à sua fé?</label>
   <div class="radio-group">
@@ -207,21 +232,18 @@ footer {
     <label><input type="radio" name="fe"> Quero me aproximar mais</label>
   </div>
 
-  <label>O que mais te ajuda a se sentir perto de Deus?</label>
+  <label>O que te ajuda a se sentir perto de Deus?</label>
   <textarea></textarea>
 </div>
 
-<!-- 🔹 LOUVOR -->
+<!-- 🎶 LOUVOR -->
 <div class="section">
   <h2>🎶 Louvor e música</h2>
 
-  <label>Quais hinos ou músicas você mais gosta?</label>
+  <label>Músicas ou hinos que você mais gosta</label>
   <textarea></textarea>
 
-  <label>Tem alguma música que te marcou?</label>
-  <textarea></textarea>
-
-  <label>Que estilo de louvor você mais curte?</label>
+  <label>Estilo de louvor que você mais curte</label>
   <select>
     <option>Tradicional</option>
     <option>Contemporâneo</option>
@@ -230,11 +252,11 @@ footer {
   </select>
 </div>
 
-<!-- 🔹 ORAÇÃO -->
+<!-- 🤍 ORAÇÃO -->
 <div class="section">
   <h2>🤍 Pedido de oração</h2>
 
-  <label>Existe algum pedido que você gostaria de compartilhar?</label>
+  <label>Quer compartilhar algum pedido?</label>
   <textarea></textarea>
 
   <label>Esse pedido pode ser compartilhado?</label>
@@ -244,11 +266,11 @@ footer {
   </select>
 </div>
 
-<!-- 🔹 ESCUTA -->
+<!-- 🫂 ESCUTA -->
 <div class="section">
   <h2>🫂 Espaço de escuta</h2>
 
-  <label>Quer desabafar ou compartilhar algo?</label>
+  <label>Quer desabafar ou falar algo?</label>
   <textarea></textarea>
 
   <label>Gostaria que alguém da liderança entrasse em contato?</label>
@@ -259,23 +281,31 @@ footer {
   </select>
 </div>
 
-<!-- 🔹 ENCERRAMENTO -->
-<div class="section">
-  <h2>💬 Final</h2>
-
-  <label>Deixe aqui qualquer outra coisa que queira falar 💙</label>
-  <textarea></textarea>
-</div>
-
-<button>Enviar com carinho 💛</button>
+<button>Enviar cadastro 💜</button>
 
 </div>
 
 <footer>
-  © CREIO Belém • Todos os dados são tratados com respeito e cuidado
+  CREIO Belém • Todas as informações são tratadas com respeito e cuidado 💙
 </footer>
 
 </div>
 
+<script>
+// Pré-visualização da foto
+document.getElementById("foto").addEventListener("change", function(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = () => {
+    document.getElementById("preview").innerHTML =
+      `<img src="${reader.result}" alt="Prévia da foto">`;
+  };
+  reader.readAsDataURL(file);
+});
+</script>
+
 </body>
 </html>
+
