@@ -1,237 +1,281 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<title>Formulário de Acompanhamento</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>2º Workshop de Regência</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<!-- Fonte moderna sem serifa -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root {
   --amarelo: #f5c400;
+  --preto: #0a0a0a;
+  --cinza: #1a1a1a;
+  --branco: #ffffff;
+  --texto: #dddddd;
 }
 
 * {
   box-sizing: border-box;
-  font-family: Poppins, sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 body {
   margin: 0;
-  background: radial-gradient(circle at top, #222, #000);
-  color: #fff;
+  background: radial-gradient(circle at top, #1f1f1f, #000);
+  color: var(--branco);
 }
 
 .container {
-  max-width: 820px;
+  max-width: 720px;
   margin: auto;
   padding: 40px 20px;
+  animation: fadeUp 1s ease;
 }
 
-h1 {
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+header {
   text-align: center;
+  margin-bottom: 35px;
+}
+
+header h1 {
   color: var(--amarelo);
+  font-size: 2.2rem;
   margin-bottom: 10px;
 }
 
-p.sub {
-  text-align: center;
-  opacity: 0.8;
-  margin-bottom: 30px;
+header p {
+  color: var(--texto);
+  font-size: 1rem;
+}
+
+.card {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(8px);
+  border-radius: 18px;
+  padding: 30px;
 }
 
 .section {
-  background: rgba(255,255,255,0.05);
-  padding: 25px;
-  border-radius: 16px;
-  margin-bottom: 25px;
+  margin-bottom: 35px;
 }
 
 .section h2 {
   color: var(--amarelo);
-  font-size: 1.1rem;
-  margin-bottom: 15px;
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.section span {
+  font-size: 0.9rem;
+  color: var(--texto);
 }
 
 label {
   display: block;
-  margin-top: 15px;
+  margin-top: 16px;
   font-size: 0.9rem;
 }
 
-input, textarea {
+input, select, textarea {
   width: 100%;
-  padding: 12px;
   margin-top: 6px;
-  border-radius: 10px;
+  padding: 14px;
+  border-radius: 12px;
   border: none;
   background: #111;
-  color: #fff;
+  color: var(--branco);
+  font-size: 0.95rem;
 }
 
 textarea {
   resize: vertical;
-  min-height: 90px;
+  min-height: 100px;
 }
 
-.options {
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid var(--amarelo);
+}
+
+.radio-group {
+  margin-top: 10px;
+}
+
+.radio-group label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   margin-top: 8px;
+  font-size: 0.9rem;
+  cursor: pointer;
 }
 
-.options label {
-  display: block;
-  margin-top: 5px;
-  cursor: pointer;
+.radio-group input {
+  width: auto;
 }
 
 button {
   width: 100%;
-  padding: 15px;
+  margin-top: 30px;
+  padding: 16px;
   background: var(--amarelo);
+  color: #000;
+  font-size: 1rem;
+  font-weight: 600;
   border: none;
   border-radius: 14px;
-  font-weight: 600;
-  font-size: 1rem;
   cursor: pointer;
-  color: #000;
+  transition: 0.3s;
+}
+
+button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px rgba(245,196,0,0.4);
+}
+
+footer {
+  text-align: center;
+  margin-top: 25px;
+  font-size: 0.8rem;
+  color: #aaa;
+}
+
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
 }
 </style>
 </head>
 
 <body>
+
 <div class="container">
 
-  <h1>Formulário de Acompanhamento</h1>
-  <p class="sub">Este é um espaço seguro e acolhedor 💙</p>
+<header>
+  <h1>2º Workshop de Regência</h1>
+  <p>Queremos te conhecer melhor 💛  
+     Responda com calma, esse espaço é seguro.</p>
+</header>
 
-  <!-- 1. INFORMAÇÕES BÁSICAS -->
-  <div class="section">
-    <h2>📌 Informações básicas</h2>
+<div class="card">
 
-    <label>Nome completo</label>
-    <input>
+<!-- 🔹 INFORMAÇÕES BÁSICAS -->
+<div class="section">
+  <h2>📌 Informações básicas</h2>
+  <span>Essas informações nos ajudam a cuidar melhor de você</span>
 
-    <label>Apelido (como gosta de ser chamado(a))</label>
-    <input>
+  <label>Nome completo</label>
+  <input required>
 
-    <label>Idade</label>
-    <input type="number">
+  <label>Apelido (como gosta de ser chamado)</label>
+  <input>
 
-    <label>Data de nascimento</label>
-    <input type="date">
+  <label>Idade</label>
+  <input type="number">
 
-    <label>Telefone / WhatsApp</label>
-    <input>
+  <label>Data de nascimento</label>
+  <input type="date">
 
-    <label>Nome do responsável</label>
-    <input>
+  <label>Telefone / WhatsApp</label>
+  <input>
 
-    <label>Contato do responsável</label>
-    <input>
+  <label>Nome do responsável</label>
+  <input>
 
-    <label>Frequenta a igreja há quanto tempo?</label>
-    <div class="options">
-      <label><input type="radio" name="tempo"> Menos de 6 meses</label>
-      <label><input type="radio" name="tempo"> 6 meses a 1 ano</label>
-      <label><input type="radio" name="tempo"> Mais de 1 ano</label>
-    </div>
+  <label>Contato do responsável</label>
+  <input>
+</div>
+
+<!-- 🔹 VIDA ESPIRITUAL -->
+<div class="section">
+  <h2>💒 Vida espiritual</h2>
+  <span>Sem pressão, responda com sinceridade</span>
+
+  <label>Como você se sente hoje em relação à sua fé?</label>
+  <div class="radio-group">
+    <label><input type="radio" name="fe"> Muito próximo(a) de Deus</label>
+    <label><input type="radio" name="fe"> Em processo</label>
+    <label><input type="radio" name="fe"> Meio distante</label>
+    <label><input type="radio" name="fe"> Quero me aproximar mais</label>
   </div>
 
-  <!-- 2. VIDA ESPIRITUAL -->
-  <div class="section">
-    <h2>💒 Vida espiritual</h2>
+  <label>O que mais te ajuda a se sentir perto de Deus?</label>
+  <textarea></textarea>
+</div>
 
-    <label>Como você se sente hoje em relação à sua fé?</label>
-    <div class="options">
-      <label><input type="radio" name="fe"> Muito próximo(a) de Deus</label>
-      <label><input type="radio" name="fe"> Em processo</label>
-      <label><input type="radio" name="fe"> Meio distante</label>
-      <label><input type="radio" name="fe"> Quero me aproximar mais</label>
-    </div>
+<!-- 🔹 LOUVOR -->
+<div class="section">
+  <h2>🎶 Louvor e música</h2>
 
-    <label>Você costuma participar dos cultos?</label>
-    <div class="options">
-      <label><input type="radio" name="cultos"> Sempre</label>
-      <label><input type="radio" name="cultos"> Às vezes</label>
-      <label><input type="radio" name="cultos"> Raramente</label>
-    </div>
+  <label>Quais hinos ou músicas você mais gosta?</label>
+  <textarea></textarea>
 
-    <label>O que mais te ajuda a se sentir perto de Deus?</label>
-    <textarea></textarea>
-  </div>
+  <label>Tem alguma música que te marcou?</label>
+  <textarea></textarea>
 
-  <!-- 3. LOUVOR -->
-  <div class="section">
-    <h2>🎶 Louvor e hinos</h2>
+  <label>Que estilo de louvor você mais curte?</label>
+  <select>
+    <option>Tradicional</option>
+    <option>Contemporâneo</option>
+    <option>Jovem / Worship</option>
+    <option>Um pouco de tudo 😄</option>
+  </select>
+</div>
 
-    <label>Quais hinos ou músicas você mais gosta de cantar na igreja?</label>
-    <textarea></textarea>
+<!-- 🔹 ORAÇÃO -->
+<div class="section">
+  <h2>🤍 Pedido de oração</h2>
 
-    <label>Alguma música que te marcou ou te ajuda em momentos difíceis?</label>
-    <textarea></textarea>
+  <label>Existe algum pedido que você gostaria de compartilhar?</label>
+  <textarea></textarea>
 
-    <label>Que estilo de louvor você mais curte?</label>
-    <div class="options">
-      <label><input type="radio" name="estilo"> Tradicional</label>
-      <label><input type="radio" name="estilo"> Contemporâneo</label>
-      <label><input type="radio" name="estilo"> Jovem / Worship</label>
-      <label><input type="radio" name="estilo"> Um pouco de tudo 😄</label>
-    </div>
-  </div>
+  <label>Esse pedido pode ser compartilhado?</label>
+  <select>
+    <option>Pode compartilhar</option>
+    <option>Somente liderança</option>
+  </select>
+</div>
 
-  <!-- 4. PEDIDO DE ORAÇÃO -->
-  <div class="section">
-    <h2>🤍 Pedido de oração</h2>
+<!-- 🔹 ESCUTA -->
+<div class="section">
+  <h2>🫂 Espaço de escuta</h2>
 
-    <label>Existe algum pedido de oração que você gostaria de compartilhar?</label>
-    <textarea></textarea>
+  <label>Quer desabafar ou compartilhar algo?</label>
+  <textarea></textarea>
 
-    <label>Esse pedido pode ser compartilhado?</label>
-    <div class="options">
-      <label><input type="radio" name="oracao"> Pode compartilhar</label>
-      <label><input type="radio" name="oracao"> Somente liderança</label>
-    </div>
-  </div>
+  <label>Gostaria que alguém da liderança entrasse em contato?</label>
+  <select>
+    <option>Sim</option>
+    <option>Não</option>
+    <option>Talvez</option>
+  </select>
+</div>
 
-  <!-- 5. DESABAFO -->
-  <div class="section">
-    <h2>🫂 Espaço de escuta</h2>
+<!-- 🔹 ENCERRAMENTO -->
+<div class="section">
+  <h2>💬 Final</h2>
 
-    <label>Quer desabafar ou compartilhar algo do seu coração?</label>
-    <textarea></textarea>
+  <label>Deixe aqui qualquer outra coisa que queira falar 💙</label>
+  <textarea></textarea>
+</div>
 
-    <label>Gostaria que alguém da liderança entrasse em contato?</label>
-    <div class="options">
-      <label><input type="radio" name="contato"> Sim</label>
-      <label><input type="radio" name="contato"> Não</label>
-      <label><input type="radio" name="contato"> Talvez</label>
-    </div>
-  </div>
-
-  <!-- 6. SUGESTÕES -->
-  <div class="section">
-    <h2>🌱 Sugestões e participação</h2>
-
-    <label>Que tipo de atividade você gostaria de ver mais?</label>
-    <textarea></textarea>
-
-    <label>Tem alguma sugestão para melhorar nossos encontros?</label>
-    <textarea></textarea>
-
-    <label>Gostaria de ajudar em alguma área? Qual?</label>
-    <textarea></textarea>
-  </div>
-
-  <!-- 7. ENCERRAMENTO -->
-  <div class="section">
-    <h2>💬 Encerramento</h2>
-
-    <label>Deixe aqui qualquer outra coisa que queira falar com a liderança 💙</label>
-    <textarea></textarea>
-  </div>
-
-  <button>Enviar com carinho 💙</button>
+<button>Enviar com carinho 💛</button>
 
 </div>
+
+<footer>
+  © CREIO Belém • Todos os dados são tratados com respeito e cuidado
+</footer>
+
+</div>
+
 </body>
 </html>
