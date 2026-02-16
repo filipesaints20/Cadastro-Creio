@@ -1,311 +1,66 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cadastro CREIO Teens</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro CREIO</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-<style>
-:root {
-  --amarelo: #ffd000;
-  --roxo: #6a00ff;
-  --rosa: #ff3cac;
-  --azul: #00c6ff;
-  --preto: #0b0b0b;
-  --card: rgba(255,255,255,0.08);
-}
-
-* {
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
-}
-
-body {
-  margin: 0;
-  background: linear-gradient(135deg, #000, #12001f, #000);
-  color: #fff;
-}
-
-.container {
-  max-width: 720px;
-  margin: auto;
-  padding: 30px 16px 50px;
-  animation: fade 1s ease;
-}
-
-@keyframes fade {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-header {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-header h1 {
-  font-size: 2.2rem;
-  background: linear-gradient(90deg, var(--amarelo), var(--rosa), var(--azul));
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
-}
-
-header p {
-  color: #ddd;
-  font-size: 1rem;
-}
-
-.card {
-  background: var(--card);
-  backdrop-filter: blur(10px);
-  border-radius: 22px;
-  padding: 28px;
-  box-shadow: 0 0 30px rgba(0,0,0,0.4);
-}
-
-.section {
-  margin-bottom: 35px;
-}
-
-.section h2 {
-  font-size: 1.2rem;
-  margin-bottom: 6px;
-  color: var(--amarelo);
-}
-
-.section span {
-  font-size: 0.9rem;
-  color: #ccc;
-}
-
-label {
-  display: block;
-  margin-top: 16px;
-  font-size: 0.9rem;
-}
-
-input, select, textarea {
-  width: 100%;
-  margin-top: 6px;
-  padding: 14px;
-  border-radius: 14px;
-  border: none;
-  background: #111;
-  color: #fff;
-  font-size: 0.95rem;
-}
-
-textarea {
-  min-height: 110px;
-  resize: vertical;
-}
-
-input:focus, select:focus, textarea:focus {
-  outline: 2px solid var(--rosa);
-}
-
-.radio-group label {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-  margin-top: 8px;
-  cursor: pointer;
-}
-
-.radio-group input {
-  width: auto;
-}
-
-input[type="file"] {
-  padding: 12px;
-  background: #111;
-  color: #aaa;
-  cursor: pointer;
-}
-
-.preview {
-  margin-top: 12px;
-  text-align: center;
-}
-
-.preview img {
-  max-width: 160px;
-  border-radius: 16px;
-  border: 3px solid var(--amarelo);
-}
-
-button {
-  width: 100%;
-  margin-top: 30px;
-  padding: 18px;
-  background: linear-gradient(90deg, var(--rosa), var(--roxo));
-  color: #fff;
-  font-size: 1.05rem;
-  font-weight: 600;
-  border: none;
-  border-radius: 18px;
-  cursor: pointer;
-  transition: 0.3s;
-}
-
-button:hover {
-  transform: scale(1.04);
-  box-shadow: 0 0 20px rgba(255,60,172,0.5);
-}
-
-footer {
-  margin-top: 25px;
-  text-align: center;
-  font-size: 0.8rem;
-  color: #aaa;
-}
-
-@media (max-width: 600px) {
-  header h1 {
-    font-size: 1.8rem;
-  }
-}
-</style>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<div class="container">
+  <div class="container">
+    <h1>💙 Cadastro CREIO</h1>
+    <p class="sub">Adolescentes | Conectados com Deus</p>
 
-<header>
-  <h1>Cadastro CREIO Teens</h1>
-  <p>Esse espaço é seguro 💙  
-  Responda com sinceridade, estamos aqui pra caminhar juntos.</p>
-</header>
+    <form id="formCadastro">
 
-<div class="card">
+      <label>Nome completo</label>
+      <input type="text" name="nome" required>
 
-<!-- 📸 FOTO -->
-<div class="section">
-  <h2>📸 Foto para identificação</h2>
-  <span>Uma foto simples, pode tirar agora mesmo 😊</span>
+      <label>Apelido</label>
+      <input type="text" name="apelido">
 
-  <label>Tirar ou enviar foto</label>
-  <input type="file" id="foto" accept="image/*" capture="user" required>
+      <label>Data de nascimento</label>
+      <input type="date" name="nascimento" required>
 
-  <div class="preview" id="preview"></div>
-</div>
+      <label>Telefone / WhatsApp</label>
+      <input type="tel" name="telefone" required>
 
-<!-- 📌 INFORMAÇÕES -->
-<div class="section">
-  <h2>📌 Informações básicas</h2>
+      <label>Nome do responsável</label>
+      <input type="text" name="responsavel" required>
 
-  <label>Nome completo</label>
-  <input required>
+      <label>Contato do responsável</label>
+      <input type="tel" name="contatoResponsavel" required>
 
-  <label>Apelido (como gosta de ser chamado)</label>
-  <input>
+      <label>Como está sua fé hoje?</label>
+      <select name="fe" required>
+        <option value="">Selecione</option>
+        <option>Muito próximo(a) de Deus</option>
+        <option>Em processo</option>
+        <option>Meio distante</option>
+        <option>Quero me aproximar mais</option>
+      </select>
 
-  <label>Idade</label>
-  <input type="number">
+      <label>📸 Foto para identificação</label>
+      <input 
+        type="file"
+        id="foto"
+        accept="image/*"
+        capture="environment"
+        required
+      >
 
-  <label>Data de nascimento</label>
-  <input type="date">
+      <img id="preview" />
 
-  <label>Telefone / WhatsApp</label>
-  <input>
+      <button type="submit">✨ Enviar Cadastro</button>
 
-  <label>Nome do responsável</label>
-  <input>
+      <p id="status"></p>
 
-  <label>Contato do responsável</label>
-  <input>
-</div>
-
-<!-- 💒 VIDA ESPIRITUAL -->
-<div class="section">
-  <h2>💒 Vida espiritual</h2>
-
-  <label>Como você se sente hoje em relação à sua fé?</label>
-  <div class="radio-group">
-    <label><input type="radio" name="fe"> Muito próximo(a) de Deus</label>
-    <label><input type="radio" name="fe"> Em processo</label>
-    <label><input type="radio" name="fe"> Meio distante</label>
-    <label><input type="radio" name="fe"> Quero me aproximar mais</label>
+    </form>
   </div>
 
-  <label>O que te ajuda a se sentir perto de Deus?</label>
-  <textarea></textarea>
-</div>
-
-<!-- 🎶 LOUVOR -->
-<div class="section">
-  <h2>🎶 Louvor e música</h2>
-
-  <label>Músicas ou hinos que você mais gosta</label>
-  <textarea></textarea>
-
-  <label>Estilo de louvor que você mais curte</label>
-  <select>
-    <option>Tradicional</option>
-    <option>Contemporâneo</option>
-    <option>Jovem / Worship</option>
-    <option>Um pouco de tudo 😄</option>
-  </select>
-</div>
-
-<!-- 🤍 ORAÇÃO -->
-<div class="section">
-  <h2>🤍 Pedido de oração</h2>
-
-  <label>Quer compartilhar algum pedido?</label>
-  <textarea></textarea>
-
-  <label>Esse pedido pode ser compartilhado?</label>
-  <select>
-    <option>Pode compartilhar</option>
-    <option>Somente liderança</option>
-  </select>
-</div>
-
-<!-- 🫂 ESCUTA -->
-<div class="section">
-  <h2>🫂 Espaço de escuta</h2>
-
-  <label>Quer desabafar ou falar algo?</label>
-  <textarea></textarea>
-
-  <label>Gostaria que alguém da liderança entrasse em contato?</label>
-  <select>
-    <option>Sim</option>
-    <option>Não</option>
-    <option>Talvez</option>
-  </select>
-</div>
-
-<button>Enviar cadastro 💜</button>
-
-</div>
-
-<footer>
-  CREIO Belém • Todas as informações são tratadas com respeito e cuidado 💙
-</footer>
-
-</div>
-
-<script>
-// Pré-visualização da foto
-document.getElementById("foto").addEventListener("change", function(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.onload = () => {
-    document.getElementById("preview").innerHTML =
-      `<img src="${reader.result}" alt="Prévia da foto">`;
-  };
-  reader.readAsDataURL(file);
-});
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
 
