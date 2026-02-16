@@ -1,66 +1,54 @@
 const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxLQyL9Iq3dkXmyxn24dKvGqqUiFJwgsLL0PyS_cyzjlG3t8r0QKktAat86Xc7MOidsjQ/exec";
 
 const form = document.getElementById("formCadastro");
-const fotoInput = document.getElementById("foto");
+const loading = document.getElementById("loading");
 const preview = document.getElementById("preview");
-const statusMsg = document.getElementById("status");
 
-let fotoBase64 = "";
-let fotoTipo = "";
-
-fotoInput.addEventListener("change", () => {
-  const file = fotoInput.files[0];
+foto.addEventListener("change", e => {
+  const file = e.target.files[0];
   if (!file) return;
-
-  fotoTipo = file.type;
 
   const reader = new FileReader();
   reader.onload = () => {
-    fotoBase64 = reader.result;
-    preview.src = fotoBase64;
-    preview.style.display = "block";
+    preview.innerHTML = `<img src="${reader.result}">`;
   };
   reader.readAsDataURL(file);
 });
 
-form.addEventListener("submit", async (e) => {
+form.addEventListener("submit", e => {
   e.preventDefault();
+  loading.style.display = "block";
 
-  if (!fotoBase64) {
-    alert("Por favor, tire uma foto para continuar 📸");
-    return;
-  }
+  const reader = new FileReader();
+  reader.onload = async () => {
+    const payload = {
+      nome: nome.value,
+      apelido: apelido.value,
+      idade: idade.value,
+      nascimento: nascimento.value,
+      telefone: telefone.value,
+      responsavel: responsavel.value,
+      contatoResponsavel: contatoResponsavel.value,
+      fe: fe.value,
+      ajudaDeus: ajudaDeus.value,
+      musicas: musicas.value,
+      estiloLouvor: estiloLouvor.value,
+      pedidoOracao: pedidoOracao.value,
+      privacidadeOracao: privacidadeOracao.value,
+      desabafo: desabafo.value,
+      contatoLideranca: contatoLideranca.value,
+      fotoBase64: reader.result.split(",")[1],
+      fotoTipo: foto.files[0].type
+    };
 
-  statusMsg.textContent = "Enviando... ⏳";
-
-  const data = {
-    nome: form.nome.value,
-    apelido: form.apelido.value,
-    nascimento: form.nascimento.value,
-    telefone: form.telefone.value,
-    responsavel: form.responsavel.value,
-    contatoResponsavel: form.contatoResponsavel.value,
-    fe: form.fe.value,
-    fotoBase64,
-    fotoTipo
-  };
-
-  try {
-    const res = await fetch(SCRIPT_URL, {
+    await fetch(SCRIPT_URL, {
       method: "POST",
-      body: JSON.stringify(data)
+      body: JSON.stringify(payload)
     });
 
-    const json = await res.json();
+    window.location.href = "sucesso.html";
+  };
 
-    if (json.status === "ok") {
-      statusMsg.textContent = "Cadastro enviado com sucesso 💙";
-      form.reset();
-      preview.style.display = "none";
-    } else {
-      statusMsg.textContent = "Erro ao enviar ❌";
-    }
-  } catch (err) {
-    statusMsg.textContent = "Erro de conexão ❌";
-  }
+  reader.readAsDataURL(foto.files[0]);
 });
+
