@@ -240,20 +240,7 @@ button {
 
 </div>
 
-<script>
-// Preview da foto
-document.getElementById("foto").addEventListener("change", function(e) {
-  const file = e.target.files[0];
-  if (!file) return;
-
-  const reader = new FileReader();
-  reader.onload = () => {
-    document.getElementById("preview").innerHTML =
-      `<img src="${reader.result}">`;
-  };
-  reader.readAsDataURL(file);
-});
-</script>
+<script src="script.js"></script>
 
 </body>
 </html>
