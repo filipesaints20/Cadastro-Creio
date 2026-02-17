@@ -1,11 +1,11 @@
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxehuCmN-NcS_W_tMCpUDLRkVMpIMPmQcdNN3kEZCLuNeKX8cZVzQr5PTW8S7N26oDLuw/exec";
-
 const form = document.getElementById("formCadastro");
 const loading = document.getElementById("loading");
 const preview = document.getElementById("preview");
+const fotoInput = document.getElementById("foto");
 
-foto.addEventListener("change", e => {
-  const file = e.target.files[0];
+// 🔍 PREVIEW DA FOTO
+fotoInput.addEventListener("change", () => {
+  const file = fotoInput.files[0];
   if (!file) return;
 
   const reader = new FileReader();
@@ -15,40 +15,68 @@ foto.addEventListener("change", e => {
   reader.readAsDataURL(file);
 });
 
-form.addEventListener("submit", e => {
+// 📤 ENVIO DO FORMULÁRIO
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
   loading.style.display = "block";
 
-  const reader = new FileReader();
-  reader.onload = async () => {
-    const payload = {
-      nome: nome.value,
-      apelido: apelido.value,
-      idade: idade.value,
-      nascimento: nascimento.value,
-      telefone: telefone.value,
-      responsavel: responsavel.value,
-      contatoResponsavel: contatoResponsavel.value,
-      fe: fe.value,
-      ajudaDeus: ajudaDeus.value,
-      musicas: musicas.value,
-      estiloLouvor: estiloLouvor.value,
-      pedidoOracao: pedidoOracao.value,
-      privacidadeOracao: privacidadeOracao.value,
-      desabafo: desabafo.value,
-      contatoLideranca: contatoLideranca.value,
-      fotoBase64: reader.result.split(",")[1],
-      fotoTipo: foto.files[0].type
-    };
+  let fotoBase64 = "";
+  let fotoTipo = "";
 
-    await fetch(SCRIPT_URL, {
-      method: "POST",
-      body: JSON.stringify(payload)
+  // 📸 PROCESSA FOTO
+  if (fotoInput.files.length > 0) {
+    const file = fotoInput.files[0];
+    fotoTipo = file.type;
+
+    fotoBase64 = await new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = () => {
+        resolve(reader.result.split(",")[1]);
+      };
+      reader.readAsDataURL(file);
     });
+  }
 
-    window.location.href = "sucesso.html";
+  // 📦 DADOS DO FORMULÁRIO
+  const dados = {
+    nome: document.getElementById("nome").value,
+    apelido: document.getElementById("apelido").value,
+    idade: document.getElementById("idade").value,
+    nascimento: document.getElementById("nascimento").value,
+    telefone: document.getElementById("telefone").value,
+    responsavel: document.getElementById("responsavel").value,
+    contatoResponsavel: document.getElementById("contatoResponsavel").value,
+
+    vidaEspiritual: document.getElementById("vidaEspiritual").value,
+    ajudaDeus: document.getElementById("ajudaDeus").value,
+
+    musicas: document.getElementById("musicas").value,
+    estiloLouvor: document.getElementById("estiloLouvor").value,
+
+    pedidoOracao: document.getElementById("pedidoOracao").value,
+    privacidadeOracao: document.getElementById("privacidadeOracao").value,
+
+    desabafo: document.getElementById("desabafo").value,
+    contatoLideranca: document.getElementById("contatoLideranca").value,
+
+    fotoBase64,
+    fotoTipo
   };
 
-  reader.readAsDataURL(foto.files[0]);
+  try {
+    await fetch("https://script.google.com/macros/s/AKfycbxehuCmN-NcS_W_tMCpUDLRkVMpIMPmQcdNN3kEZCLuNeKX8cZVzQr5PTW8S7N26oDLuw/exec", {
+      method: "POST",
+      body: JSON.stringify(dados)
+    });
+
+    // ✅ REDIRECIONA PARA SUCESSO
+    window.location.href = "sucesso.html";
+
+  } catch (error) {
+    loading.style.display = "none";
+    alert("Erro ao enviar o cadastro. Tente novamente.");
+    console.error(error);
+  }
 });
+
 
